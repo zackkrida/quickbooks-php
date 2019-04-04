@@ -71,7 +71,7 @@ class QuickBooks_Encryption_AES extends QuickBooks_Encryption
 		//print('decrypting [' . $encrypted . ']' . '<br />');
 		
 		@mcrypt_generic_init($crypt, $key, substr($encrypted, 0, $iv_size));
-		$decrypted = trim(mdecrypt_generic($crypt, substr($encrypted, $iv_size)));
+		$decrypted = trim(@mdecrypt_generic($crypt, substr($encrypted, $iv_size)));
 		@mcrypt_generic_deinit($crypt);
 		@mcrypt_module_close($crypt);
 		
